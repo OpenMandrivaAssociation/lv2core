@@ -33,8 +33,6 @@ have the LV2 bundle contained in this package installed somewhere in the LV2
 path (it contains plugin classes and other useful information).
 Distributions are encouraged to include this package.
 
- -- Dave Robillard <dave@drobilla.net>
-
 %package	devel
 Summary:	Development files for the core LV2 specification
 Group:		Development/C
