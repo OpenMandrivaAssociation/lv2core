@@ -4,7 +4,7 @@
 Summary:	The core LV2 specification
 Name:		lv2core
 Version:	2.0
-Release:	%mkrel 1
+Release:	%mkrel 2
 Group:		System/Libraries
 License:	LGPL
 URL:		http://lv2plug.in/
@@ -23,15 +23,8 @@ generic as possible.  As a result, LV2 can be independently extended
 (retaining compatibility wherever possible), and virtually any feasible
 plugin features can be implemented in an LV2 plugin.
 
-This package is in usual source package form.
 The major version of this package refers to the LV2 specification revision
 contained, while the minor version refers only to this package.
-
-Application authors aren't required to depend on this package (including lv2.h
-in source distributions is acceptable) but any system with LV2 plugins should
-have the LV2 bundle contained in this package installed somewhere in the LV2
-path (it contains plugin classes and other useful information).
-Distributions are encouraged to include this package.
 
 %package	devel
 Summary:	Development files for the core LV2 specification
