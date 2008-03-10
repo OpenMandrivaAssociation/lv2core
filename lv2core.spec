@@ -23,8 +23,6 @@ generic as possible.  As a result, LV2 can be independently extended
 (retaining compatibility wherever possible), and virtually any feasible
 plugin features can be implemented in an LV2 plugin.
 
-More information about LV2 can be found at <http://lv2plug.in>.
-
 This package is in usual source package form.
 The major version of this package refers to the LV2 specification revision
 contained, while the minor version refers only to this package.
