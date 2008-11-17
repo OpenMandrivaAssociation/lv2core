@@ -3,13 +3,14 @@
 
 Summary:	The core LV2 specification
 Name:		lv2core
-Version:	2.0
-Release:	%mkrel 4
+Version:	3.0
+Release:	%mkrel 1
 Group:		System/Libraries
 License:	LGPL
 URL:		http://lv2plug.in/
-Source0:	http://lv2plug.in/spec/%{name}-%{version}.tar.gz
+Source0:	http://lv2plug.in/spec/%{name}-%{version}.tar.bz2
 BuildRequires:	pkgconfig
+BuildRequires:	python
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -40,21 +41,27 @@ This package contains development files for the core LV2 specification.
 
 %build
 
-%configure2_5x
+python ./waf configure \
+    --prefix=%{_prefix} \
+    --libdir=%{_libdir}/ \
+    --mandir=%{_mandir}
 
-%make
+python ./waf build
 
 %install
 rm -rf %{buildroot}
 
-%makeinstall_std
+DESTDIR=%{buildroot} python ./waf install
+
+# lib64 fix
+perl -pi -e "s|/lib\b|/%{_lib}|g" %{buildroot}%{_libdir}/pkgconfig/lv2core.pc
 
 %clean
 rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS COPYING README
+%doc AUTHORS ChangeLog README
 %dir %{_libdir}/lv2/lv2core.lv2
 %{_libdir}/lv2/lv2core.lv2/lv2.ttl
 %{_libdir}/lv2/lv2core.lv2/manifest.ttl
@@ -63,4 +70,3 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_includedir}/lv2.h
 %{_libdir}/pkgconfig/lv2core.pc
-
