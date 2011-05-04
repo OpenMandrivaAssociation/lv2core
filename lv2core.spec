@@ -4,7 +4,7 @@
 Summary:	The core LV2 specification
 Name:		lv2core
 Version:	3.0
-Release:	%mkrel 4
+Release:	%mkrel 5
 Group:		System/Libraries
 License:	LGPL
 URL:		http://lv2plug.in/
