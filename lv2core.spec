@@ -3,10 +3,10 @@
 
 Summary:    The core LV2 specification
 Name:       lv2core
-Version:    4.0
+Version:    6.0
 Release:    %mkrel 1
 Group:      System/Libraries
-License:    LGPL
+License:    ISC
 URL:        http://lv2plug.in/
 Source0:    http://lv2plug.in/spec/%{name}-%{version}.tar.bz2
 BuildRequires:  pkgconfig
@@ -40,7 +40,6 @@ This package contains development files for the core LV2 specification.
 %setup -q -n %{name}-%{version}
 
 %build
-perl -pi -e "s|/lib\b|/%{_lib}|g" lv2config.c
 python ./waf configure \
     --prefix=%{_prefix} \
     --libdir=%{_libdir}
@@ -52,26 +51,21 @@ rm -rf %{buildroot}
 
 DESTDIR=%{buildroot} python ./waf install
 
-# lib64 fix
-perl -pi -e "s|/lib\b|/%{_lib}|g" %{buildroot}%{_libdir}/pkgconfig/lv2core.pc
-
 %clean
 rm -rf %{buildroot}
 
-%post
-%{_bindir}/lv2config
-
-
 %files
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog README
+%doc AUTHORS README
 %dir %{_libdir}/lv2/lv2core.lv2
-%{_libdir}/lv2/lv2core.lv2/lv2.ttl
+%{_libdir}/lv2/lv2core.lv2/lv2core.ttl
+%{_libdir}/lv2/lv2core.lv2/lv2core.doap.ttl
 %{_libdir}/lv2/lv2core.lv2/manifest.ttl
-%{_bindir}/lv2config
 
 %files devel
 %defattr(-,root,root)
 %{_includedir}/lv2.h
+%{_includedir}/lv2/lv2plug.in/ns/lv2core
 %{_libdir}/pkgconfig/lv2core.pc
+%{_libdir}/lv2/lv2core.lv2/lv2.h
 %{_libdir}/lv2/lv2core.lv2/lv2.h
