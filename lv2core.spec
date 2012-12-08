@@ -11,7 +11,6 @@ URL:        http://lv2plug.in/
 Source0:    http://lv2plug.in/spec/%{name}-%{version}.tar.bz2
 BuildRequires:  pkgconfig
 BuildRequires:  python
-BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 LV2 is a standard for plugins and matching host applications, primarily
@@ -51,11 +50,7 @@ rm -rf %{buildroot}
 
 DESTDIR=%{buildroot} python ./waf install
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc AUTHORS README
 %dir %{_libdir}/lv2/lv2core.lv2
 %{_libdir}/lv2/lv2core.lv2/lv2core.ttl
@@ -63,9 +58,7 @@ rm -rf %{buildroot}
 %{_libdir}/lv2/lv2core.lv2/manifest.ttl
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/lv2.h
 %{_includedir}/lv2/lv2plug.in/ns/lv2core
 %{_libdir}/pkgconfig/lv2core.pc
-%{_libdir}/lv2/lv2core.lv2/lv2.h
 %{_libdir}/lv2/lv2core.lv2/lv2.h
