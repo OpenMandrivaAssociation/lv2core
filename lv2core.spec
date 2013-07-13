@@ -1,16 +1,15 @@
 %define _enable_debug_packages %{nil}
 %define debug_package          %{nil}
 
-Summary:    The core LV2 specification
-Name:       lv2core
-Version:    6.0
-Release:    %mkrel 1
-Group:      System/Libraries
-License:    ISC
-URL:        http://lv2plug.in/
-Source0:    http://lv2plug.in/spec/%{name}-%{version}.tar.bz2
-BuildRequires:  pkgconfig
-BuildRequires:  python
+Summary:	The core LV2 specification
+Name:		lv2core
+Version:	6.0
+Release:	1
+Group:		System/Libraries
+License:	ISC
+Url:		http://lv2plug.in/
+Source0:	http://lv2plug.in/spec/%{name}-%{version}.tar.bz2
+BuildRequires:	python
 
 %description
 LV2 is a standard for plugins and matching host applications, primarily
@@ -26,28 +25,25 @@ plugin features can be implemented in an LV2 plugin.
 The major version of this package refers to the LV2 specification revision
 contained, while the minor version refers only to this package.
 
-%package    devel
-Summary:    Development files for the core LV2 specification
-Group:      Development/C
-Requires:   %{name} = %{version}
+%package devel
+Summary:	Development files for the core LV2 specification
+Group:		Development/C
+Requires:	%{name} = %{version}
 
-%description    devel
+%description devel
 This package contains development files for the core LV2 specification.
 
 %prep
-
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
 python ./waf configure \
-    --prefix=%{_prefix} \
-    --libdir=%{_libdir}
+	--prefix=%{_prefix} \
+	--libdir=%{_libdir}
 
 python ./waf build
 
 %install
-rm -rf %{buildroot}
-
 DESTDIR=%{buildroot} python ./waf install
 
 %files
@@ -62,3 +58,4 @@ DESTDIR=%{buildroot} python ./waf install
 %{_includedir}/lv2/lv2plug.in/ns/lv2core
 %{_libdir}/pkgconfig/lv2core.pc
 %{_libdir}/lv2/lv2core.lv2/lv2.h
+
