@@ -4,7 +4,7 @@
 Summary:	The core LV2 specification
 Name:		lv2core
 Version:	6.0
-Release:	5
+Release:	6
 Group:		System/Libraries
 License:	ISC
 Url:		http://lv2plug.in/
