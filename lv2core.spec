@@ -9,7 +9,7 @@ Group:		System/Libraries
 License:	ISC
 Url:		http://lv2plug.in/
 Source0:	http://lv2plug.in/spec/%{name}-%{version}.tar.bz2
-BuildRequires:	python
+BuildRequires:	python2
 
 %description
 LV2 is a standard for plugins and matching host applications, primarily
@@ -37,14 +37,14 @@ This package contains development files for the core LV2 specification.
 %setup -q
 
 %build
-python ./waf configure \
+python2 ./waf configure \
 	--prefix=%{_prefix} \
 	--libdir=%{_libdir}
 
-python ./waf build
+python2 ./waf build
 
 %install
-DESTDIR=%{buildroot} python ./waf install
+DESTDIR=%{buildroot} python2 ./waf install
 
 %files
 %doc AUTHORS README
