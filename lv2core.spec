@@ -7,7 +7,7 @@ Version:	6.0
 Release:	12
 Group:		System/Libraries
 License:	ISC
-Url:		http://lv2plug.in/
+Url:		https://lv2plug.in/
 Source0:	http://lv2plug.in/spec/%{name}-%{version}.tar.bz2
 BuildRequires:	python2
 
